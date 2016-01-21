@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+  <classPathEntry location="mysql-connector-java-5.1.37.jar" />
+
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	<!-- 生成的Java文件的编码 -->
+    <property name="javaFileEncoding" value="UTF-8"/>
+  	<!-- 关闭日期注释 -->
+  	<commentGenerator>
+  		<property name="suppressAllComments" value="true" />
+		<property name="suppressDate" value="true" />
+	</commentGenerator>
+	
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://dbhezisq.mysql.rds.aliyuncs.com:3306/jkan_dev_db"
+        userId=""
+        password="">
+    </jdbcConnection>
+
+	<!-- 指定生成的类型为java类型，避免数据库中number等类型字段 -->
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用MAVEN来自动生成 -->
+    <javaModelGenerator targetPackage="com.hontee.api.model" targetProject="src">
+      <property name="enableSubPackages" value="true" />
+    </javaModelGenerator>
+
+	<!--对应的xml mapper文件  -->
+    <sqlMapGenerator targetPackage="com.hontee.api.sqlmapper"  targetProject="src">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- 对应的dao接口 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.hontee.api.mapper"  targetProject="src">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+	<!-- 需要生成的表 -->
+    <table tableName="sys_organizations" domainObjectName="Organization" />
+    <table tableName="sys_permissions" domainObjectName="Permission" />
+    <table tableName="sys_roles" domainObjectName="Role" />
+    <table tableName="sys_tracks" domainObjectName="Track" />
+    <table tableName="sys_users" domainObjectName="User" />
+    <table tableName="t_groups" domainObjectName="Group" />
+    <table tableName="t_labels" domainObjectName="Label" />
+    <table tableName="t_platforms" domainObjectName="Platform" />
+    <table tableName="t_posts" domainObjectName="Post" />
+    <table tableName="t_shares" domainObjectName="Share" />
+    
+  </context>
+</generatorConfiguration>
